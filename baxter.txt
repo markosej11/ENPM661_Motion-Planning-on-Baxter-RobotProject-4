@@ -1,0 +1,25 @@
+Launching the simulator for baxter
+1. cd ros_ws
+2. ./baxter.sh sim
+3. roslaunch baxter_gazebo baxter_world.launch
+
+
+Laaunch Movit-Rviz
+1. Make sure simulator is running
+2. open new terminal
+3. cd ros_ws
+4. source devel/setup.bash
+5. rosrun baxter_tools enable_robot.py -e
+6. rosrun baxter_interface joint_trajectory_action_server.py
+7. new terminal
+8. cd ros_ws
+9. source devel/setup.bash
+10. roslaunch baxter_moveit_config demo_baxter.launch right_electric_gripper:=true left_electric_gripper:=true
+
+run a puthon file
+1. cd ros_ws
+2. source devel/setup.bash
+3. rosrun baxter_sim_examples rohan.py
+
+rostopic echo /robot/limb/left/endpoint_state
+
