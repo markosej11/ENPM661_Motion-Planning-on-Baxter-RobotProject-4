@@ -158,6 +158,7 @@ class PickAndPlace(object):
         # servo down to release
         joint_angles = self.ik_request(pose)
         self._guarded_move_to_joint_position(joint_angles)
+        rospy.sleep(0.5)
 
     def pick(self, pose):
         # open the gripper
@@ -348,7 +349,18 @@ def main():
     firstActions_goal = Point(x=0.3602,y=0.9664,z=-0.1412)
     moveit(pnp,firstActions_start,firstActions,firstActions_goal,overhead_orientation)
 
+    
+    secondActions = []
+    secondActions_start = Point(x=0.3231,y=0.8220,z=-0.1412)
+    secondActions.append(Point(x=0.2179,y=0.6659,z=0.1491))
+    secondActions.append(Point(x=0.6263,y=0.6024,z=0.3402))
+    secondActions.append(Point(x=0.7692,y=-0.0026,z=0.3388))
+    secondActions_goal = Point(x=0.7958,y=0.0495,z=-0.1412)
+    moveit(pnp,secondActions_start,secondActions,secondActions_goal,overhead_orientation)
+    
     pnp.move_to_start(starting_joint_angles)
+
+
 
     while not rospy.is_shutdown():
         pass
